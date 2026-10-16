@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你的恋爱脑指数是多少？</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff7fa;color:#302932;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}.wrap{max-width:680px;margin:auto;padding:24px 16px 50px}.hero{text-align:center;padding:25px 5px}.hero .e{font-size:44px}.hero h1{font-size:28px;margin:10px 0}.hero p{line-height:1.7;color:#7c7078}.notice{font-size:12px;color:#988b92}.card{background:white;border:1px solid #eee0e7;border-radius:20px;padding:20px;margin:14px 0;box-shadow:0 7px 25px #6b304010}.progress{color:#847780;font-size:13px}.bar{height:7px;background:#f1e6eb;border-radius:99px;margin:10px 0 18px}.bar i{display:block;height:100%;background:#e65b88;border-radius:99px}.q{font-size:19px;font-weight:700;line-height:1.55;margin:14px 0}.opt{display:block;border:1px solid #eadfe5;border-radius:14px;padding:14px;margin:10px 0;line-height:1.5}.opt input{accent-color:#e65b88;margin-right:8px}button{width:100%;border:0;border-radius:14px;padding:15px;background:#e65b88;color:white;font-size:16px;font-weight:700;margin-top:8px}.secondary{background:#f8eaf0;color:#984d69}.score{text-align:center;font-size:50px;font-weight:800;color:#e65b88;margin:4px}.rt{text-align:center;font-size:24px;margin:8px 0 16px}.body{line-height:1.85;color:#544b52}.small{font-size:12px;color:#91858c;line-height:1.7}.center{text-align:center}.tag{display:inline-block;padding:6px 12px;border-radius:99px;background:#fff0f5;color:#b24970;font-size:13px}.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero"><div class="e">💘</div><h1>你的恋爱脑指数是多少？</h1><p>15道题 · 约2分钟<br>按照第一反应选择，没有标准答案</p><div class="notice">仅供娱乐和自我了解，不用于心理或医学诊断</div></div>
+<div id="quiz"></div><div id="result" class="card hidden"></div>
+</div>
+<script>
+const qs=[
+["喜欢的人突然半天没回消息，你会？",["他可能忙，正常","偶尔看一下手机","忍不住想是不是自己说错了什么","开始反复查看聊天记录"]],
+["对方说“今天有点累”，你的第一反应？",["那你早点休息","问问发生什么了","想办法哄他开心","立刻担心是不是自己惹他不高兴"]],
+["如果喜欢的人突然和别人走得很近，你会？",["没什么感觉","有一点点在意","会忍不住观察他们","心里已经开始上演连续剧"]],
+["谈恋爱以后，你会不会经常查看对方的动态？",["基本不会","偶尔看看","比较频繁","几乎每天都想知道他在干嘛"]],
+["对方和你意见不合，你通常？",["各自表达观点","尽量沟通","容易先妥协","只要关系不受影响，让我怎样都可以"]],
+["朋友说“你谈恋爱以后变了”，你的反应？",["不可能","可能有一点","好像确实有","我觉得他们根本不了解我"]],
+["如果对方一天都没有主动联系你？",["正常过自己的生活","有点奇怪，但不会多想","会开始想他是不是不开心","忍不住主动找他"]],
+["你会因为恋爱取消原来的个人计划吗？",["基本不会","偶尔会","如果对方需要，我可能会","经常这样"]],
+["吵架以后，对方没有主动找你？",["谁的问题谁解决","等一等再说","会越来越焦虑","忍不住主动和好"]],
+["看到对方以前的恋爱经历，你会？",["那都是过去了","稍微了解一下","偶尔会比较","忍不住反复想"]],
+["对方说了一句比较冷淡的话，你会？",["不会特别在意","想想是不是他今天心情不好","反复琢磨这句话","直接怀疑感情是不是出问题了"]],
+["恋爱以后，你愿意为了对方改变自己的生活习惯吗？",["基本不会","合理的可以","很多事情都会调整","只要对方开心，我都可以改"]],
+["如果对方突然说“我们聊聊”，你第一反应？",["聊就聊呗","有点紧张","开始猜是不是出了问题","已经脑补完分手全过程"]],
+["你觉得恋爱在生活中的重要程度？",["只是生活的一部分","比较重要","占据很大一部分","感觉没有恋爱生活都失去重点了"]],
+["如果非常喜欢一个人，但发现这段关系让你越来越不开心，你会？",["及时止损","认真沟通后再决定","还是会舍不得","明知道不合适，也很难离开"]]
+];
+const rs=[
+[25,"🧊 超清醒派","你的恋爱脑指数比较低。喜欢一个人并不会让你完全失去自己的生活节奏。你可以投入感情，但通常不会轻易把自己的情绪和生活全部交给对方。","独立 · 理性 · 有边界感"],
+[37,"🌷 轻度恋爱脑","平时的你其实挺清醒。但遇到真正喜欢的人以后，理智偶尔还是会偷偷下班。你会在意对方，也愿意为关系付出，但通常还能保持自己的生活。","认真 · 温柔 · 有一点点上头"],
+[49,"💗 中度恋爱脑","你已经进入“感情会明显影响情绪”的区域。对方的一句话可能让你开心很久，也可能让你反复琢磨。你很容易把对方的情绪放在心上。","投入 · 敏感 · 容易上头"],
+[60,"🚨 重度恋爱脑","你的恋爱脑指数已经拉满。一旦真正喜欢上一个人，很容易把对方放在生活的重要位置。喜欢一个人没有问题，但别在爱别人之前，把自己弄丢了。","高投入 · 高敏感 · 容易被关系牵动"]
+];
+let n=0,s=0;
+function render(){let q=qs[n];document.getElementById("quiz").innerHTML='<div class="card"><div class="progress">第 '+(n+1)+' / '+qs.length+' 题</div><div class="bar"><i style="width:'+(n/qs.length*100)+'%"></i></div><div class="q">'+(n+1)+'. '+q[0]+'</div>'+q[1].map((x,i)=>'<label class="opt"><input type="radio" name="a" value="'+(i+1)+'">'+String.fromCharCode(65+i)+'. '+x+'</label>').join('')+'<button onclick="next()">'+(n===qs.length-1?'查看我的结果':'下一题')+'</button></div>'}
+function next(){let a=document.querySelector('input[name=a]:checked');if(!a){alert('先选一个答案哦～');return}s+=+a.value;n++;if(n<qs.length)render();else show()}
+function show(){let r=rs.find(x=>s<=x[0]);document.getElementById("quiz").classList.add("hidden");let b=document.getElementById("result");b.classList.remove("hidden");b.innerHTML='<div class="center"><span class="tag">你的测试结果</span></div><div class="score">'+s+'<span style="font-size:18px;color:#8b7d85"> / 60</span></div><div class="rt">'+r[1]+'</div><div class="body">'+r[2]+'</div><p class="center"><span class="tag">'+r[3]+'</span></p><hr style="border:0;border-top:1px solid #eee0e7;margin:22px 0"><p class="small">本测试为趣味自测，仅供娱乐和自我了解，不用于心理或医学诊断。</p><button class="secondary" onclick="location.reload()">再测一次</button>'}
+render();
+</script>
+</body>
+</html>
